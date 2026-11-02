@@ -21,7 +21,7 @@ def organize_directory(directory_to_organize):
     dir_path = Path(directory_to_organize)
     if not dir_path.is_dir():
         return None
-    for file_path in list(dir_path.iterdir()):
+    for file_path in list(dir_path.iterdir()): # list() as we are changing the directory in place 
         directory = ""
         if file_path.is_dir() and file_path.name in CATEGORY_FOLDERS:
             continue  
