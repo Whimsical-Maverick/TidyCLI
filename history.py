@@ -10,8 +10,16 @@ def record_move(source, target):
     }
     with HISTORY_FILE.open("a", encoding="utf-8") as f:
         f.write(json.dumps(entry) + "\n")
+
+
 def load_history():
     if not HISTORY_FILE.exists():
         return []
     with HISTORY_FILE.open(encoding="utf-8") as f:
         return [json.loads(line) for line in f if line.strip()]
+
+
+def save_history(entries):
+    with HISTORY_FILE.open("w", encoding="utf-8") as f:
+        for e in entries:
+            f.write(json.dumps(e) + "\n")
